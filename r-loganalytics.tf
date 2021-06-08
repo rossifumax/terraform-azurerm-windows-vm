@@ -1,4 +1,6 @@
 resource "azurerm_virtual_machine_extension" "log_extension" {
+  count = var.enable_log_analytics_extension ? 1 : 0
+
   name = "${local.vm_name}-logextension"
 
   publisher                  = "Microsoft.EnterpriseCloud.Monitoring"

@@ -102,12 +102,12 @@ module "vm_os_disk_tagging" {
   source  = "claranet/tagging/azurerm"
   version = "4.0.0"
 
+  count = var.enable_os_disk_tagging ? 1 : 0
+
   nb_resources = 1
   resource_ids = [data.azurerm_managed_disk.vm_os_disk.id]
   behavior     = "merge" # Must be "merge" or "overwrite"
 
   tags = merge(local.default_tags, var.extra_tags, var.os_disk_extra_tags)
 }
-
-
 

@@ -234,3 +234,21 @@ variable "backup_policy_id" {
   description = "Backup policy ID from the Recovery Vault to attach the Virtual Machine to (value to `null` to disable backup)"
   type        = string
 }
+
+variable "enable_os_disk_tagging" {
+  description = "Boolean to enable OS disk tagging"
+  type        = bool
+  default     = true
+}
+
+variable "enable_key_vault_extension" {
+  description = "Boolean to enable Key Vault extension to deploy certificates on the Virtual Machine"
+  type        = bool
+  default     = true
+}
+
+variable "enable_log_analytics_extension" {
+  description = "Boolean to enable Log Analytics extension"
+  type        = bool
+  default     = true
+}
