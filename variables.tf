@@ -223,11 +223,13 @@ variable "license_type" {
 variable "log_analytics_workspace_guid" {
   description = "GUID of the Log Analytics Workspace to link with"
   type        = string
+  default     = null
 }
 
 variable "log_analytics_workspace_key" {
   description = "Access key of the Log Analytics Workspace to link with"
   type        = string
+  default     = null
 }
 
 variable "backup_policy_id" {
