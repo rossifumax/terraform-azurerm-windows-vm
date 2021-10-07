@@ -8,16 +8,11 @@ resource "azurerm_windows_virtual_machine" "vm" {
 
   tags = merge(local.default_tags, local.default_vm_tags, var.extra_tags)
 
-  source_image_id = var.vm_image_id
-
-  dynamic "source_image_reference" {
-    for_each = var.vm_image_id == null ? ["fake"] : []
-    content {
-      offer     = lookup(var.vm_image, "offer", null)
-      publisher = lookup(var.vm_image, "publisher", null)
-      sku       = lookup(var.vm_image, "sku", null)
-      version   = lookup(var.vm_image, "version", null)
-    }
+  source_image_reference {
+    offer     = lookup(var.vm_image, "offer", null)
+    publisher = lookup(var.vm_image, "publisher", null)
+    sku       = lookup(var.vm_image, "sku", null)
+    version   = lookup(var.vm_image, "version", null)
   }
 
   availability_set_id = var.availability_set_id
@@ -104,6 +99,8 @@ resource "null_resource" "winrm_connection_test" {
 }
 
 module "vm_os_disk_tagging" {
+  count = var.enable_os_disk_tagging ? 1 : 0
+
   source  = "claranet/tagging/azurerm"
   version = "4.0.0"
 
@@ -140,3 +137,5 @@ resource "azurerm_virtual_machine_data_disk_attachment" "disk_attach" {
   lun     = lookup(each.value, "lun")
   caching = lookup(each.value, "caching", "ReadWrite")
 }
+
+

@@ -264,3 +264,15 @@ variable "log_analytics_agent_version" {
   type        = string
   default     = "1.0"
 }
+
+variable "enable_os_disk_tagging" {
+  description = "Boolean to enable OS disk tagging"
+  type        = bool
+  default     = true
+}
+
+variable "enable_log_analytics_extension" {
+  description = "Boolean to enable Log Analytics extension"
+  type        = bool
+  default     = true
+}
