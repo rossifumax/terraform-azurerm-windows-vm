@@ -12,7 +12,7 @@ resource "azurerm_public_ip" "public_ip" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name                = "${local.vm_name}-nic"
+  name                = coalesce(var.nic_custom_name, "${local.vm_name}-nic")
   location            = var.location
   resource_group_name = var.resource_group_name
 

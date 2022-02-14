@@ -276,3 +276,9 @@ variable "enable_log_analytics_extension" {
   type        = bool
   default     = true
 }
+
+variable "nic_custom_name" {
+  description = "NIC custom name"
+  type        = string
+  default     = null
+}
