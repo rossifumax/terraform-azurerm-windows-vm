@@ -250,7 +250,7 @@ variable "azure_monitor_data_collection_rule_id" {
 variable "azure_monitor_agent_version" {
   description = "Azure Monitor Agent extension version"
   type        = string
-  default     = "1.1.2"
+  default     = "1.2"
 }
 
 variable "azure_monitor_agent_auto_upgrade_enabled" {
